@@ -1,0 +1,26 @@
+* {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 10px;
+}
+body * {
+  margin: 20px 0 20px 0;
+}
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 20x;
+}
+h3 {
+  font-size: 16x;
+}
+.terms {
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  color: rgb(64, 64, 212);
+}
+a:hover {
+  text-decoration: underline;
+}
