@@ -1,7 +1,7 @@
 /* <button id="generateNumber">Generate Random Number</button>
 <div id="resultBox"></div> */
 
-const buttonElement = document.getElementById('generateNumberButton');
+const buttonElement = document.getElementById("generateNumberButton");
 
 buttonElement.addEventListener('click', function () {
   const randomNum = Math.floor(Math.random() * 9999);
