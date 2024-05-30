@@ -10,10 +10,11 @@
 
 
 function generateRandom() {
-  alert("Nazar");
+  let randomValue = Math.floor(Math.random() * 10000);
+  displayMessage(`Our random number is: ${randomValue}`);
 }
 
 
 function displayMessage(message) {
-  document.getElementById("messageText").innerHTML = message;
+  document.getElementById("dynamicTxt").innerHTML = message;
 }
