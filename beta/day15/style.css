@@ -1,0 +1,20 @@
+
+#headerTxt{
+  color: rgb(59, 39, 246);
+  font-size: 20px;
+}
+
+body.changed-background {
+  background-color: rgb(98, 123, 235); /* Example color */
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  
+}
+ 
+#dynamicTxt{
+ height: 2rem;
+ width: 1.2 rem;
+
+}

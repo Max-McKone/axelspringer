@@ -1,0 +1,30 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.item p {
+  margin: 0;
+}
+
+.item {
+  background-color: lightgray;
+  border: 2px solid black;
+  padding: 20px;
+  font-size: 0.7rem;
+  line-height: 1.7;
+}
+
+.item:nth-child(1) {
+  font-size: 2.1rem; 
+  display: grid;
+  grid-column: span 3;
+   align-content: center; 
+ 
+}
