@@ -3,14 +3,31 @@
 //   Instructions:
 // 1. Create a set and add the numbers 1, 2, 3, 4, and 5 to it.
 
-let dataSet = new Set([1, 2, 3, 4, 5]);
-console.log(dataSet)
-dataSet.add(6);
-dataSet.delete(1);
-console.log(dataSet)
+// Try using our add and remove with a HTML input and button to manipulate the set data.
+
+// let dataSet = new Set([1, 2, 3, 4, 5]);
+// console.log(dataSet)
+// dataSet.add(6);
+// dataSet.delete(1);
+// console.log(dataSet)
 
 
 
 
-// 3. Remove a number from the set.
-// 4. Print all the elements of the set.
+const carSet = new Set();
+
+// Add elements
+carSet.add("BMV");
+carSet.add("Volvo");
+carSet.add("Mercedes");
+carSet.add("Jaguar");
+carSet.add("Tesla");
+
+
+document.getElementById("add-btn")
+
+document.getElementById("delete-btn")
+
+function deleteCar() {
+  
+}
