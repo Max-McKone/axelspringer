@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queue Implementation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">    
+        <h1>Queue Implementation</h1>
+        <input type="text" id="queueInput" placeholder="Enter an element">
+        <button onclick="enqueueToQueue()">Enqueue</button>
+        <button onclick="dequeueFromQueue()">Dequeue</button>
+        <ul id="queueList"></ul>
+    </div>
+    <script>
+        //Implement a queue using an array
+        const queue = ["hi"];
+
+        //Get the input field
+        const inputField = document.getElementById('queueInput');
+
+        //Function to add the value from the input field to the queue
+        function enqueueToQueue() {
+            const value = inputField.value; //Get the value from the input field
+            if (value) { //Check if the value is not empty
+                queue.push(value); //Add the value to the queue
+                inputField.value = '';  //Clear the input field
+                displayQueue(); //Display the updated queue
+            }
+        }
+
+        //Function to remove the first element from the queue
+        function dequeueFromQueue() {
+            if (queue.length > 0) { //Check if the queue is not empty
+                queue.shift(); //shift() method removes the first element from the queue
+                displayQueue(); //
+            } else {
+                alert('The queue is empty!'); //Display an alert if the queue is empty
+            }
+        }
+
+            //Function to display the queue
+        function displayQueue() {
+            const queueList = document.getElementById('queueList'); //Get the ul element
+            queueList.innerHTML = ''; //Clear the list before displaying the updated queue
+            queue.forEach((element) => { //Loop through the queue array 
+                const li  = document.createElement('li'); //Create a new li element for each element in the queue
+                li.textContent = element; //Create a new li element for each element in the queue
+                queueList.appendChild(li);//Append the li element to the ul element
+            });
+
+            
+        }
+      
+        displayQueue(); //Display the initial queue
+    </script>
+</body>
+</html>
