@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queue Operations</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+</head>
+<body>
+    <div class="content-container">   
+        <h1>Queue Operations</h1>
+        <button onclick="enqueue()">Enqueue</button>
+        <button onclick="dequeue()">Dequeue</button>
+        <p>Queue: <span id='queue'></span></p>
+    </div>
+    <script>const queue = [];
+        const queueDisplay = document.getElementById('queue');
+        
+        function enqueue() {
+            const value = prompt('Enter a value to enqueue');
+            queue.push(value);
+            updateDisplay();
+        }
+        
+        function dequeue() {
+            if (queue.length === 0) {
+                alert('Queue is empty');
+                return;
+            }
+        
+            const dequeuedValue = queue.shift();
+            alert(`Dequeued value: ${dequeuedValue}`);
+            updateDisplay();
+        }   
+        
+        function updateDisplay() {
+            queueDisplay.innerHTML = queue.join('<br>');
+        }</script>
+</body>
+</html>
