@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class = 'content-container'>
+    <h1>Calculator App</h1>
+        <form onsubmit="calculate(event)">
+            <label for="num1">Number 1:</label>
+            <input type="number" id="num1" name="num1">
+
+            <label for="operator">Operator:</label>
+            <input type="text" id="operator" name="operator">
+
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2" name="num2">
+
+            <button type="submit">Calculate</button>
+
+            <label for="result">Result:</label>
+            <span id="result"></span>
+        </form>
+    </div>
+    <script>
+        function calculate(event) {
+            event.preventDefault();  // Prevent form submission
+            const operator = document.getElementById('operator').value;
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isValidOperator(operator)) {
+                const result = performOperation(operator, num1, num2);
+                console.log('Result:', result);
+                document.getElementById('result').textContent = result;
+            } else {
+                console.log('Invalid operator');
+                document.getElementById('result').textContent = 'Invalid operator';
+            }
+        }
+
+        function isValidOperator(operator) {
+            return ['+', '-', '*', '/'].includes(operator);
+        }
+
+        function performOperation(operator, num1, num2) {
+            switch (operator) {
+                case '+':
+                    return num1 + num2;
+                case '-':
+                    return num1 - num2;
+                case '*':
+                    return num1 * num2;
+                case '/':
+                    return num1 / num2;
+                default:
+                    return 'Invalid operator';
+            }
+        }
+    </script>
+</body>
+</html>
