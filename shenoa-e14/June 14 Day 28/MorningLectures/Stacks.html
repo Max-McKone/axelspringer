@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Stack Operations</title>
+</head>
+<body>
+    <div class="content-container">
+        <h1>Stack Operations</h1>
+        <button onclick="push()">Push</button>
+        <button onclick="pop()">Pop</button>
+        <p>Stack: <span< id='stack'></p>
+    </div>
+    <script>const stack = [];
+        const stackDisplay = document.getElementById('stack');
+        
+        function push() {
+            const value = prompt('Enter a value to push');
+            stack.push(value);
+            updateDisplay();
+        }
+        
+        function pop() {
+            if (stack.length === 0) {
+                alert('Stack is empty');
+                return;
+            }
+        
+        const poppedValue = stack.pop();
+        alert(`Popped value: ${poppedValue}`);
+        updateDisplay();
+        }
+        
+        function updateDisplay() {
+            stackDisplay.innerHTML = stack.join(', ');
+        }
+          </script>
+</body>
+</html>
