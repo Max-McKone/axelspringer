@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class = 'content-container'>
-    <h1>Calculator App</h1>
-        <form onsubmit="calculate(event)">
+    <div class='content-container'>
+        <h1>Calculator App</h1>
+        <form id="calculatorForm">
             <label for="num1">Number 1:</label>
             <input type="number" id="num1" name="num1">
 
@@ -25,40 +25,57 @@
         </form>
     </div>
     <script>
-        function calculate(event) {
-            event.preventDefault();  // Prevent form submission
-            const operator = document.getElementById('operator').value;
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
+        // Initialise a set for supported operators
+        const supportedOperators = new Set(['+', '-', '*', '/']);
 
-            if (isValidOperator(operator)) {
-                const result = performOperation(operator, num1, num2);
-                console.log('Result:', result);
-                document.getElementById('result').textContent = result;
-            } else {
-                console.log('Invalid operator');
-                document.getElementById('result').textContent = 'Invalid operator';
-            }
+        // Implement validation function
+        function isOperator(input) {
+            return supportedOperators.has(input);
         }
 
-        function isValidOperator(operator) {
-            return ['+', '-', '*', '/'].includes(operator);
-        }
-
-        function performOperation(operator, num1, num2) {
-            switch (operator) {
+        // Function to perform basic operations
+        function performCalculation(a, operator, b) {
+            switch(operator){
                 case '+':
-                    return num1 + num2;
+                    return a + b;
                 case '-':
-                    return num1 - num2;
+                    return a - b;
                 case '*':
-                    return num1 * num2;
+                    return a * b;
                 case '/':
-                    return num1 / num2;
+                    return a / b;
                 default:
                     return 'Invalid operator';
             }
         }
+
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const operator = document.getElementById('operator').value;
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isOperator(operator)) {
+                const result = performCalculation(num1, operator, num2);
+                displayResult(result);
+            } else {
+                displayResult('Invalid operator');
+            }
+        }
+
+        // Display the result
+        function displayResult(result) {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = result;
+        }
+
+        // Attach event listener to the form on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('calculatorForm');
+            form.addEventListener('submit', handleFormSubmit);
+        });
     </script>
 </body>
 </html>
