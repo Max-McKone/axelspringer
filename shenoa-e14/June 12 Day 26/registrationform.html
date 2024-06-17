@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+        <label for="email">Email:</label>
+        <input type="text" id="email" required>
+        <button type="button" onclick="registerUser()">Register</button>
+    </form>
+    
+    <div id="registeredUsers">
+        <h2>Registered Users</h2>
+        <ul id="usersList"></ul>
+    </div>
+    
+    <script src="formscript.js"></script>
+</body>
+</html>
