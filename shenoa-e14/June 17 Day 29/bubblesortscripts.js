@@ -1,7 +1,7 @@
 let numbers = [5, 1, 4, 2, 8];
 
-function displayArray(arr) {
-    const arrayContainer = document.getElementById('array-container');
+function displayArray(arr, containerId) {
+    const arrayContainer = document.getElementById(containerId);
     arrayContainer.innerHTML = ''; // Clear the container
     arr.forEach(num => {
         const element = document.createElement('div');
@@ -19,7 +19,7 @@ function bubbleSort(arr) {
     function displayArrayStep(arr) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                displayArray(arr);
+                displayArray(arr, 'sorted-array-container');
                 resolve();
             }, 500);
         });
@@ -53,9 +53,9 @@ function bubbleSort(arr) {
 }
 
 // Initial display of the unsorted array
-displayArray(numbers);
+displayArray(numbers, 'unsorted-array-container');
 
 // Add event listener to the button to start the sort
 document.getElementById('sort-button').addEventListener('click', () => {
-    bubbleSort(numbers);
+    bubbleSort([...numbers]); // Pass a copy of the array to keep the original unsorted array
 });

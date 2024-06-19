@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Calculator App</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class='content-container'>
-        <h1>Calculator App</h1>
-        <form id="calculatorForm">
-            <label for="num1">Number 1:</label>
-            <input type="number" id="num1" name="num1">
+<link rel="stylesheet" href="styles.css">
+<title>Calculator App</title>  
+<div class"container">
+    <h1>Basic Calculator</h1>
+    <span id="history"</span>
+</div>
+</html>     
 
-            <label for="operator">Operator:</label>
-            <input type="text" id="operator" name="operator">
-
-            <label for="num2">Number 2:</label>
-            <input type="number" id="num2" name="num2">
-
-            <button type="submit">Calculate</button>
-
-            <label for="result">Result:</label>
-            <span id="result"></span>
-        </form>
-    </div>
     <script>
-        // Initialise a set for supported operators
-        const supportedOperators = new Set(['+', '-', '*', '/']);
+        // Define a set for basic operators
+        const operators = new Set(['+', '-', '*', '/']);
 
-        // Implement validation function
+        // Create a Map to store operations history
+        const history = new Map();
+        let historyCounter = 0;
+
+        // Function to check if the input is a valid operator
         function isOperator(input) {
-            return supportedOperators.has(input);
+            return operators.has(input);
         }
 
-        // Function to perform basic operations
-        function performCalculation(a, operator, b) {
-            switch(operator){
+        // Function to perform basic operations and store history
+        function calculate(a, operator, b) {
+            if (!isOperator(operator)) {
+                return "Invalid operator!";
+            }
+            let result;
+            switch (operator) {
                 case '+':
-                    return a + b;
+                    result = a + b;
+                    break;
                 case '-':
-                    return a - b;
+                    result = a - b;
+                    break;
                 case '*':
-                    return a * b;
+                    result = a * b;
+                    break;
                 case '/':
-                    return a / b;
+                    result = a / b;
+                    break;
                 default:
-                    return 'Invalid operator';
+                    result = "Unknown error!";
+            }
+            history.set(++historyCounter, `${a} ${operator} ${b} = ${result}`);
+            displayHistory();
+            return result;
+        }
+
+        // Function to display history on the web page
+        function displayHistory() {
+            const historyDiv = document.getElementById('history');
+            historyDiv.innerHTML = ''; // Clear previous history
+            for (let [key, value] of history) {
+                const p = document.createElement('p');
+                p.textContent = value;
+                historyDiv.appendChild(p);
             }
         }
 
-        // Handle form submission
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const operator = document.getElementById('operator').value;
-            const num2 = parseFloat(document.getElementById('num2').value);
-
-            if (isOperator(operator)) {
-                const result = performCalculation(num1, operator, num2);
-                displayResult(result);
-            } else {
-                displayResult('Invalid operator');
-            }
+        // Example usage
+        function testCalculator() {
+            console.log(calculate(2, '+', 3)); // 5
+            console.log(calculate(5, '-', 2)); // 3
+            console.log(calculate(4, '*', 3)); // 12
+            console.log(calculate(8, '/', 2)); // 4
+            console.log(calculate(8, '^', 2)); // Invalid operator!
         }
 
-        // Display the result
-        function displayResult(result) {
-            const resultElement = document.getElementById('result');
-            resultElement.textContent = result;
-        }
-
-        // Attach event listener to the form on DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('calculatorForm');
-            form.addEventListener('submit', handleFormSubmit);
-        });
+        // Call the test function on page load
+        window.onload = testCalculator;
     </script>
-</body>
+
 </html>
