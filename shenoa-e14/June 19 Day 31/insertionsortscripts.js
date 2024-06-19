@@ -1,4 +1,4 @@
-const originalArray = [64, 34, 25, 12, 22, 11, 90]
+const originalArray = [3,5,1,4,9]
 const originalArrayDisplay = document.getElementById("original-array");
 const sortedArrayDisplay = document.getElementById("sorted-array");
 const iterationsDisplay = document.getElementById("iterations");
