@@ -13,7 +13,7 @@ function bubbleSortAscending(arr){
     do {
         swapped = false;
 
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < n ; i++) {
             if (arr[i] > arr[i+1]) {
                 let temp = arr[i];
                 arr[i] = arr[i+1];
@@ -22,6 +22,7 @@ function bubbleSortAscending(arr){
             }
         }
         }
+       //Checks if swapped is true and as long as something has been swapped, continue
         while (swapped);
         return arr;
     }
